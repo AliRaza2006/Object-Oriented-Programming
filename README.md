@@ -12,3 +12,5 @@ Please join the discord server for class discussions and sharing useful material
 Discord invitation: https://discord.gg/8xRfYDbFw3
 
 Please read through the #rules channel and change your nicknames as requested.
+
+~
