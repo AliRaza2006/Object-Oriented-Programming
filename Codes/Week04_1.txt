@@ -1,0 +1,87 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+
+using namespace std;
+
+class Test {
+    int ID;
+    string name;
+    //string arr[];
+    
+    public:
+    // void initializeArr (int size) {
+    //     arr = new string[10];
+    // }
+    void setID(int ID) {
+        this->ID = ID;
+    }
+    void setName(string name) {
+        this->name = name;
+    }
+    int getID() {
+        return ID;
+    }
+    string getName() {
+        return name;
+    }
+    Test() : ID(0), name("default"){
+        //cout << ID << name << endl;
+        ID = 1;
+        name = "--default";
+        cout << "Ran default constructor\n";
+    }
+    Test (int ID, string name) : ID(ID), name(name){
+        //this->ID = ID;
+        //this->name = name;
+        cout << "Ran parameterized constructor\n";
+    }
+    Test (const Test &obj) {
+        this->ID = obj.ID;
+        this->name = obj.name;
+        cout << "Ran copy constructor\n";
+    }
+    void display() {
+        cout << "ID: " << ID << ", Name: " << name << endl;
+    }
+    ~Test() {
+        cout << "destructor called for ID: " << ID << endl;
+    }
+};
+
+int compareTestObjects(Test ob1, Test ob2) {
+   if (ob1.getID() > ob2.getID()) {
+       return -1;
+   }  else if (ob1.getID() == ob2.getID()) {
+       return 0;
+   } else {
+       return 1;
+   } 
+    
+}
+
+int main() {
+    int arrInt[2] = {1, 2};
+    Test obj;
+    Test arr1[2] = {obj, Test(11, "b")};
+    
+    //arr1[0] = Test(10, "a");
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // Test obj1 = Test();
+    // obj1.display();
+    // Test obj2 = Test(99, "test 2");
+    // obj2.display();
+    // int val = compareTestObjects(obj1, obj2);
+    // {
+    //     Test obj3 = Test(100, "rest");
+    // }
+    
+    return 0;
+}
