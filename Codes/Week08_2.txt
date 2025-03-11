@@ -1,0 +1,59 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+
+class Parent {
+    public:
+    //not virtual
+    /*
+    void Happy() {
+        cout << "Parent is Happy\n";
+    }
+    void Sad() {
+        cout << "Parent is Sad\n";
+    }
+    */
+    //virtual
+    virtual void Happy() {
+        cout << "Parent is Happy\n";
+    }
+    virtual void Sad() {
+        cout << "Parent is Sad\n";
+    }
+    
+};
+
+class Child : public Parent {
+    public:
+    void Happy() override{
+        cout << "Child is Happy\n";
+    }
+    void Sad(int i) {
+        cout << "Child is Sad\n";
+    }
+};
+int main() {
+    //through object
+    Child obj;
+    obj.Happy();
+    //obj.Sad(); //error
+    obj.Sad(1);
+    obj.Parent::Happy();
+    obj.Parent::Sad();
+    
+    cout << "``````````````````````````````````" << endl;
+    //dynamic polymorphism
+    int choice = 2;
+    Parent *ptr;
+    if(choice == 1) {
+        ptr = new Parent();
+    } else {
+        ptr = new Child();
+    }
+    // can only call Happy() or Sad() | Never Sad(int)
+    ptr->Happy();
+    ptr->Sad();
+    //ptr->Sad(10); //error
+    
+    return 0;
+}

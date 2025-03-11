@@ -1,0 +1,60 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+
+class Parent {
+    int priv;
+    protected:
+    int prot;
+    public:
+    int pub;
+    Parent(int a, int b, int c) : priv(a), prot(b), pub(c) {
+        cout << "Parent\n";
+    }
+    void setPriv(int a) {
+        priv = a;
+    }
+    ~Parent() {
+        cout << "~Parent\n";
+    }
+};
+
+class Child : public Parent {
+    int varC;
+    public:
+    Child(int a, int b, int c, int d) : Parent(a, b, c), varC(d) {
+         cout << "Child\n";
+    }
+    void func() {
+        //priv = 10;
+        prot = 20;
+        pub = 30;
+        setPriv(10);
+    }
+    ~Child() {
+         cout << "~Child\n";
+    }
+};
+
+class GrandChild : public Child {
+    public:
+    GrandChild(int a, int b, int c, int d) : Child(a, b, c, d) {
+         cout << "GrandChild\n";
+    }
+    void func(int a) {
+        
+    }
+    ~GrandChild() {
+        cout << "~GrandChild\n";
+    }
+};
+
+int main() {
+    GrandChild ch(1, 2, 3,4 );
+    ch.pub = 10;
+    //ch.prot = 20;
+    ch.func(1);
+    ch.setPriv(20);
+
+    return 0;
+}

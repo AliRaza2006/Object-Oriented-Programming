@@ -1,0 +1,53 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+
+class ConstTest{
+  int x;
+  int y;
+  public: 
+  ConstTest() : x(10), y(100){
+      
+  }
+  int getX() const { //const function
+      return x;
+  }
+  int getY() {
+      return y;
+  }
+  void setY(const int y) { // const arguments
+      this->y = y;
+  }
+//   int setX(int x) {
+//       this->x = x;
+//   }
+};
+
+int main() {
+    
+    
+    const ConstTest obj; // const object
+    obj.getX();
+    obj.getY(); //const object can only call const functions
+    int i = 10, j = 10;
+    const int a = 10;
+    const int b = 96999;
+    
+    int *ptr = &i;
+    *ptr = 99;
+    
+    const int* c_ptr = &a;
+    c_ptr = &b;
+    
+    int* const ptr1 = &i;
+    *ptr1 = 1000;
+    //ptr1 = &j;
+
+    const int* const ptr2 = &b;
+    //ptr2 = &a;
+    //*ptr2 = 1000000;
+
+    cout << i << endl << a << endl;
+
+    return 0;
+}

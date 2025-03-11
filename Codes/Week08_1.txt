@@ -1,0 +1,64 @@
+#include<iostream>
+using namespace std;
+
+class A {
+    
+public:
+    int a = 0;
+    A(int a) {
+        this->a = a;
+        cout << "A Parameterized Constructor\n";
+    }
+    A() {
+        cout << "A Constructor\n";
+    }
+    void name() {
+        cout << a;
+        cout << "This is class A \n";
+    }
+};
+
+//base class I
+class B : virtual public A {
+    public:
+    B() : A(1) {
+        cout << "B Constructor\n";
+    }
+    void name() {
+        cout << a;
+        cout << "This is class B \n";
+    }
+    void name(string h) {
+        cout << " hello \n";
+    }
+};
+
+//base class II 
+class C : virtual public A {
+    public:
+    C() : A(2) {
+        cout << "C Constructor\n";
+    }
+};
+
+//derived class
+class D : public B, public C {
+    public:
+    D() : A(1), B(), C(){
+        cout << "D Constructor\n";
+    }
+};
+
+int main()
+{
+    D d; //A a(12);
+    //a.name();
+    //d.A::name();
+    //cout << d.a;
+    B b;
+    b.name();
+    b.A::name();
+    b.name("abc");
+    
+    return 0;
+}

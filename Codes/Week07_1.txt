@@ -1,0 +1,57 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+
+class A {};
+class B : public A {};
+
+class CellPhone {
+    private:
+    int ID;
+    protected:
+    string contacts[10];
+    public:
+    CellPhone() {
+        cout << "default" << endl;
+    }
+    CellPhone(int ID) : ID(ID){
+        cout << "param" << endl;
+    }
+    void makeCall(int index) {
+        cout << "calling " << contacts[index] << endl;
+    }
+    ~CellPhone() {
+        cout  << "destroyed" << endl;
+    }
+    void setID(int ID) {
+        this->ID = ID;
+    }
+};
+
+
+class Phone : public CellPhone{
+    
+};
+
+class FlipPhone : public CellPhone{
+    
+};
+
+class SmartPhone : public CellPhone{
+    public:
+    SmartPhone() : CellPhone(9){
+        contacts[1] = "0000000";
+        setID(10);
+        cout << "default SP" << endl;
+    }
+    ~SmartPhone() {
+        cout  << "destroyed SP" << endl;
+    }
+};
+
+int main() {
+    SmartPhone s1;
+    s1.makeCall(1);
+    //cout << s1.contacts[1];    
+    return 0;
+}

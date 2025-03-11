@@ -1,0 +1,40 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+
+class Parent1 {
+    protected:
+    int a;
+    public:
+    int getA() {
+        return a;
+    }
+};
+class Parent2 {
+    protected:
+    int a;
+    public:
+    int getA() {
+        return a;
+    }
+};
+
+class Child : public Parent1, public Parent2 {
+    public:
+    int getParent2A() {
+        return Parent2::getA(); 
+    }
+    int getParent1A() {
+        return Parent1::a; 
+    }
+};
+
+class Child1 : public Child {};
+class Child2 : public Child {};
+int main() {
+    Child ch;
+    ch.getParent2A();
+    ch.Parent1::getA();
+    ch.Parent2::getA();
+    return 0;
+}

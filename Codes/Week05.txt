@@ -1,0 +1,44 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+
+class staticEx {
+  int a;
+  static int b;
+  static int count;
+  public:
+  staticEx() {
+      count++;
+  }
+  static void setB(int _b) {
+      b = _b;
+      //a = _b;
+  }
+  static void display() {
+      //cout << a << endl;
+      cout << b << endl;
+      cout << "count: " << count<< endl;
+  }
+  ~staticEx() {
+      count--;
+  }
+};
+
+int staticEx::b = 0;
+int staticEx::count = 0;
+
+int main() {
+    
+    //cout << staticEx::b;
+    staticEx::setB(10);
+    staticEx eg1;
+    //eg1.display();
+    eg1.setB(20);
+    eg1.display();
+    staticEx *eg2 = new staticEx();
+    eg2->display();
+    delete eg2;
+    staticEx::display();
+    
+    return 0;
+}
