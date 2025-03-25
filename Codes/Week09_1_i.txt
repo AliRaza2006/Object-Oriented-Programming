@@ -1,0 +1,40 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+class B; // forward declaration
+class A {
+    string name;
+    void func() {
+        cout << "private function: " << name << endl ;
+    }
+    friend class B;
+    friend void friendFunc(A& obj);
+    
+};
+void friendFunc(A& obj) {
+    cout << "Friend Function using A\n";
+    obj.name = "Name";
+    obj.func();
+}
+
+class B {
+    A memberOfB;
+    public:
+    void funcUsingA(A objA) {
+        cout << "Function using A\n";
+        objA.name = "Name2";
+        objA.func();
+        memberOfB.name = objA.name;
+        friendFunc(memberOfB);
+        memberOfB.func();
+    }
+};
+
+int main() {
+    A obj;
+    friendFunc(obj);
+    //obj.func();
+    B obj2;
+    obj2.funcUsingA(obj);
+    return 0;
+}

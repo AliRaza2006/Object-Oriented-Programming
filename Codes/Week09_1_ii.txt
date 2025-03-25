@@ -1,0 +1,50 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+class B;
+class A {
+    int a;
+    friend void accessingPrivateMembers();
+    friend void friendFunc(A &obj);
+    friend class B;
+    public:
+    void display() {
+        cout << "a: " << a <<endl; 
+    }
+};
+
+class B {
+    
+    public: 
+    A objAinClassB;
+    void FuncB(A &obj) {
+    obj.a = 111; 
+}
+};
+
+void accessingPrivateMembers() {
+    A test;
+    test.a = 10;
+    //obj.a = 99;
+}
+void friendFunc(A &obj) {
+    obj.a = 1; 
+}
+
+int main() {
+    A obj1;
+    obj1.display();
+    accessingPrivateMembers();
+    obj1.display();
+    friendFunc(obj1);
+    obj1.display();
+    
+    B objB;
+    objB.FuncB(obj1);
+    obj1.display();
+    
+    objB.objAinClassB = obj1;
+    //objB.objAinClassB.a = 100;
+    
+    return 0;
+}
